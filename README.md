@@ -81,7 +81,7 @@ Scan through a 10,000 x 10,000 character grid. As expected, datrie outperformed 
     0inputs+0outputs (0major+76902minor)pagefaults 0swaps
     
 ## Trie vs set() for Japanese (N=1,000,000)
-Interestingly, for Japanese characters (scanning through a random grid of mostly Kanji), the performance difference was more pronounced. This is useful to know because Japanese (like Chinese) does not use obvious word boundaries and would benefit from using set() rather than Trie for Japanese language parsers.
+Interestingly, for Japanese characters (scanning through a random grid of mostly Kanji), the performance difference was more pronounced. This is useful to know because Japanese (like Chinese) does not use obvious word boundaries and would benefit from using set() rather than Trie for Japanese language parsers. For 日本.txt, I extracted all kanji and kana from [EDICT](http://edrdg.org/jmdict/edict.html).
 
     $ /usr/bin/time ./test_j_set.py
     4140
