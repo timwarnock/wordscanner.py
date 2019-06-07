@@ -30,7 +30,7 @@ Additionally, there are numerous "Super-fast, efficient" Trie implementations. I
 
 ## Hypothesis
 
-Rather than use a DAWG or Trie (even a "Super-fast, efficient" Trie), it is preferable to use a Python set([]) with the following algorithm:
+Rather than use a DAWG or Trie (even a "Super-fast, efficient" Trie), it is preferable to use a Python set() with the following algorithm:
 
     almost_words = set([])
     for word in dictionary:
@@ -41,7 +41,7 @@ In other words, a flattened structure that contains all of the enumerated keys w
 
     {'a', 'ap', 'app', 'appl', 'ar'}
 
-For Natural Language Processing tasks, this is nearly as memory efficient as a Trie or DAWG, and with equal to or better performance. I created a set of test scripts to demonstrate this, using the included 1000x1000 character grid, as well as a generated 10,000 x 10,000 character grid.
+For Natural Language Processing tasks, this is nearly as memory efficient as a Trie or DAWG, and with equal to or better performance. I created test scripts to demonstrate this, using the included 1000x1000 character grid, as well as a generated 10,000 x 10,000 character grid.
 
 
 ## Trie vs set() for N=1,000,000
@@ -63,7 +63,7 @@ Scanning through a 1000x1000 character grid. Interestingly, datrie performed the
     0inputs+0outputs (0major+9539minor)pagefaults 0swaps
 
 ## Trie vs set() for N=100,000,000
-Scanning through a 10,000 x 10,000 character grid. As expected datrie outperformed the naive nested dict Trie, but failed to overtake the much simpler python set() implementation.
+Scanning through a 10,000 x 10,000 character grid. As expected, datrie outperformed the naive nested dict Trie, but failed to overtake the much simpler python set() implementation.
 
     $ /usr/bin/time ./test_w_datrie.py
     9787
@@ -81,5 +81,5 @@ Scanning through a 10,000 x 10,000 character grid. As expected datrie outperform
     0inputs+0outputs (0major+76902minor)pagefaults 0swaps
     
 ## Conclusion
-For natural language processing, a naive set() of prefixes is faster than Trie, and is nearly as memory efficient as [libdatrie](https://linux.thai.net/~thep/datrie/datrie.html).
+For natural language processing, a naive set() of prefixes is faster than Trie, and is nearly as memory efficient as a DAWG or [libdatrie](https://linux.thai.net/~thep/datrie/datrie.html).
 
