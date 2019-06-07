@@ -4,7 +4,7 @@ Scan through characters (grids, array, whatever) seeking words (English or other
 This is simply a proof-of-concept to demonstrate the utility of using a Python set() as an alternative to Trie or DAWG structures for finding words in a given dictionary (English or otherwise).
 
 ## Overview
-Given a character grid (or any character stream) where you can scan through individual characters, find all matching English words (according to an English dictionary, say, with roughly 100,000 entries). This is a standard exercise in natural language processig (with many examples and utils in [NLTK](https://www.nltk.org/)).
+Given a character grid (or any character stream) where you can scan through individual characters, find all matching English words (according to an English dictionary, say, with roughly 100,000 entries). This is a standard exercise in natural language processing (with many examples and utils in [NLTK](https://www.nltk.org/)).
 
 This is typically done with a [Trie](https://en.wikipedia.org/wiki/Trie), i.e., a prefix tree that can be implemented in Python using a nested dict:
 
