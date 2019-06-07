@@ -94,7 +94,7 @@ Interestingly, for Japanese characters (scanning through a random grid of mostly
     0inputs+0outputs (0major+71679minor)pagefaults 0swaps
 
 ## Trie vs set() for Japanese (N=100,000,000)
-The 10,000 x 10,000 character grid was not added in git due to space constraints, but can easily be rendered with the built-in gen_grid_random() function.
+The same performance benefit of set() holds up even for extremely large input grids. The 10,000 x 10,000 character grid was not added in git due to space constraints, but can easily be rendered with the built-in gen_grid_random() function in wordscanner.py
 
     $ /usr/bin/time ./test_j_set.py
     50220
@@ -108,5 +108,5 @@ The 10,000 x 10,000 character grid was not added in git due to space constraints
 
 
 ## Conclusion
-For natural language processing, a naive set() of prefixes is faster than Trie, and is nearly as memory efficient as a DAWG or [libdatrie](https://linux.thai.net/~thep/datrie/datrie.html).
+For natural language processing, a naive set() of prefixes is faster than Trie, and is as memory efficient as a DAWG or [libdatrie](https://linux.thai.net/~thep/datrie/datrie.html).
 
