@@ -35,7 +35,7 @@ Rather than use a DAWG or Trie (even a "Super-fast, efficient" Trie), it is pref
     almost_words = set([])
     for word in dictionary:
         for i in range(len(word)-1)
-            almost_words.add(word[0:i+1]
+            almost_words.add(word[0:i+1])
 
 In other words, a flattened structure that contains all of the enumerated keys within a Trie or DAWG. The above example of ["apple", "are"] would look like this,
 
