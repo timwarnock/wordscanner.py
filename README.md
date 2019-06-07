@@ -1,7 +1,7 @@
 # wordscanner.py
 Scan through characters (grids, array, whatever) seeking words (English or otherwise).
 
-This is simply a proof-of-concept to demonstrate the utility of using Python sets as an alternative to Trie structures for finding words in a given dictionary (English or otherwise).
+This is simply a proof-of-concept to demonstrate the utility of using a Python set() as an alternative to Trie or DAWG structures for finding words in a given dictionary (English or otherwise).
 
 ## Overview
 Given a character grid (or any character stream) where you can scan through individual characters, find all matching English words (according to an English dictionary, say, with roughly 100,000 entries). This is a standard exercise in natural language processig (with many examples and utils in [NLTK](https://www.nltk.org/)).
@@ -45,7 +45,7 @@ For Natural Language Processing tasks, this is nearly as memory efficient as a T
 
 
 ## Trie vs set() for N=1,000,000
-Scanning through a 1000x1000 character grid. Interestingly, datrie performed the slowest, most likely due to the initial construction of the Trie itself. It was noticeably slower than the nested dict, but it was the most memory efficient. For larger grids, the slower construction of the Trie should not matter (as it's constant, based on the size of the dictionary).
+Scan through a 1000x1000 character grid. Interestingly, datrie performed the slowest, most likely due to the initial construction of the Trie itself. It was noticeably slower than the nested dict, but it was the most memory efficient. For larger grids, the slower construction of the Trie should not matter (as it's constant, based on the size of the dictionary).
 
     $ /usr/bin/time ./test_w_datrie.py
     3155
@@ -63,7 +63,7 @@ Scanning through a 1000x1000 character grid. Interestingly, datrie performed the
     0inputs+0outputs (0major+9539minor)pagefaults 0swaps
 
 ## Trie vs set() for N=100,000,000
-Scanning through a 10,000 x 10,000 character grid. As expected, datrie outperformed the naive nested dict Trie, but failed to overtake the much simpler python set() implementation.
+Scan through a 10,000 x 10,000 character grid. As expected, datrie outperformed the naive nested dict Trie, but failed to overtake the much simpler python set() implementation.
 
     $ /usr/bin/time ./test_w_datrie.py
     9787
