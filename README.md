@@ -80,6 +80,33 @@ Scan through a 10,000 x 10,000 character grid. As expected, datrie outperformed 
     120.05user 0.25system 2:00.42elapsed 99%CPU (0avgtext+0avgdata 139864maxresident)k
     0inputs+0outputs (0major+76902minor)pagefaults 0swaps
     
+## Trie vs set() for Japanese (N=1,000,000)
+Interestingly, for Japanese characters (scanning through a random grid of mostly Kanji), the performance difference was more pronounced. This is useful to know because Japanese (like Chinese) does not use obvious word boundaries, and would benefit from using set() rather than Trie.
+
+    $ /usr/bin/time ./test_j_set.py
+    4140
+    2.44user 0.07system 0:02.52elapsed 99%CPU (0avgtext+0avgdata 115208maxresident)k
+    0inputs+0outputs (0major+31642minor)pagefaults 0swaps
+
+    $ /usr/bin/time ./test_j_trie.py
+    4140
+    3.89user 0.14system 0:04.04elapsed 99%CPU (0avgtext+0avgdata 286012maxresident)k
+    0inputs+0outputs (0major+71679minor)pagefaults 0swaps
+
+## Trie vs set() for Japanese (N=100,000,000)
+The 10,000 x 10,000 character grid is not included due to space constraints, but can easily be rendered with the built-in gen_grid_random() function.
+
+    $ /usr/bin/time ./test_j_set.py
+    50220
+    177.84user 0.42system 2:58.54elapsed 99%CPU (0avgtext+0avgdata 507412maxresident)k
+    0inputs+0outputs (0major+145801minor)pagefaults 0swaps
+
+    $ /usr/bin/time ./test_j_trie.py
+    50220
+    250.44user 0.56system 4:11.86elapsed 99%CPU (0avgtext+0avgdata 680960maxresident)k
+    0inputs+0outputs (0major+184571minor)pagefaults 0swaps
+
+
 ## Conclusion
 For natural language processing, a naive set() of prefixes is faster than Trie, and is nearly as memory efficient as a DAWG or [libdatrie](https://linux.thai.net/~thep/datrie/datrie.html).
 
